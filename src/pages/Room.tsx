@@ -2,8 +2,8 @@ import { useRoom } from '../core/query'
 import { Navigate, useParams } from 'react-router-dom'
 import { useState } from 'react'
 import RoomMenu from '../components/Setting/RoomMenu'
-import RoomConentForm from '../components/RoomConentForm'
-import RoomConentCenter from '../components/RoomConentCenter'
+import RoomContentForm from '../components/RoomContentForm'
+import RoomContentCenter from '../components/RoomContentCenter'
 
 const Room = () => {
   const { id: roomId = '' } = useParams()
@@ -11,7 +11,7 @@ const Room = () => {
   console.log('room:', room)
 
   const[openMenu, setOpenMenu] = useState(false)
-  const[openAdd, setOpenAdd ] = useState(false)
+  const[openAdd, setOpenAdd] = useState(false)
 
   const openAddCard = () => {
     setOpenAdd(true)
@@ -26,12 +26,12 @@ const Room = () => {
       {
         openAdd
         ? 
-        <RoomConentForm 
+        <RoomContentForm 
           openAdd={openAdd}
           setOpenAdd={setOpenAdd}
         />
         :
-        <RoomConentCenter 
+        <RoomContentCenter 
           room={room}
           openMenu={openMenu}
           setOpenMenu={setOpenMenu}

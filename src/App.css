@@ -15,10 +15,6 @@
   padding: 30px;
 }
 
-.room-content {
-  padding-top: 100px;
-}
-
 .modal-background{
   position: fixed;
   top:0; left: 0; bottom: 0; right: 0;
@@ -27,4 +23,18 @@
 
 .add-card-header {
   justify-content: space-between;
+}
+
+.room-content,
+.room-content-form-layout {
+  padding-top: 100px;
+  height: 89vh;
+}
+.room-content-form-layout {
+  background-color: #FEFCE8;
+}
+
+.room-content-form {
+  margin: 0 auto;
+  width: 45%;
 }

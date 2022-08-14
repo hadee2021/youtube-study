@@ -7,15 +7,17 @@ interface Props {
   title?: string,
   toggle: boolean,
   setToggle: React.Dispatch<React.SetStateAction<boolean>>,
+  onSave?: (e?: React.BaseSyntheticEvent<object, any, any> | undefined) => Promise<void>
 }
-const RoomHeader = ({ consumer, title = '', toggle, setToggle }: Props) => {
-
-  // 임시적으로 함수
-  const addCard = () => {
+const RoomHeader = ({ consumer, title = '', toggle, setToggle, onSave }: Props) => {
+  
+  const onClickSave = () => {
+    if(onSave === undefined) return
+    onSave()
     console.log('추가')
     setToggle(!toggle)
   }
-  //////
+  
   return (
     <div>
       <AppBar position="fixed">
@@ -31,7 +33,7 @@ const RoomHeader = ({ consumer, title = '', toggle, setToggle }: Props) => {
                 새 커리큘럼 추가
               </Typography>
               <div className="save-btn">
-                <IconButton onClick={() => addCard()}>
+                <IconButton onClick={onClickSave}>
                   <SaveIcon htmlColor="white"/>
                 </IconButton>
               </div>

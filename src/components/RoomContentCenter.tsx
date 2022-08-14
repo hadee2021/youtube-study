@@ -9,15 +9,15 @@ interface PropsCenter {
   openAddCard: () => void
 }
 
-const RoomConentCenter = ({room, openMenu, setOpenMenu, openAddCard}: PropsCenter) => {
+const RoomContentCenter = ({room, openMenu, setOpenMenu, openAddCard}: PropsCenter) => {
   return (
-    <>
+    <div className="room-content">
       <RoomHeader 
         title={room?.name} 
         toggle={openMenu} 
         setToggle={setOpenMenu}
       />
-      <div className="room-content">
+      <div className="room-content-center">
         본문
       </div>
       {/* 양식 추가버튼 */}
@@ -37,8 +37,8 @@ const RoomConentCenter = ({room, openMenu, setOpenMenu, openAddCard}: PropsCente
           <Add fontSize="large" />
         </Fab>
       }
-    </>
+    </div>
   )
 }
 
-export default RoomConentCenter
+export default RoomContentCenter
