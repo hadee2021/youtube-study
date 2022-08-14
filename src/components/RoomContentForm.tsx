@@ -1,7 +1,8 @@
-import React from 'react'
 import RoomHeader from './RoomHeader'
 import { Controller, useForm } from 'react-hook-form'
 import { Box, TextField, Tooltip } from '@mui/material'
+import YouTube from 'react-youtube'
+import getVideoId from 'get-video-id'
 
 interface PropsForm {
   openAdd: boolean,
@@ -17,7 +18,6 @@ interface ContentForm {
 }
 
 const RoomContentForm = ({openAdd, setOpenAdd}: PropsForm) => {
-
   const {
     control,
     watch,
@@ -34,6 +34,7 @@ const RoomContentForm = ({openAdd, setOpenAdd}: PropsForm) => {
       youtube: ''
     },
   })
+  const { youtube } = watch()
 
   const onSave = handleSubmit(() => {})
 
@@ -147,6 +148,46 @@ const RoomContentForm = ({openAdd, setOpenAdd}: PropsForm) => {
             }}
             {...register('memo')}
           />
+        </Box>
+        <Box>
+          <Controller
+            name="youtube"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                placeholder="e.g) https://www.youtube.com/watch?v=..."
+                variant="standard" 
+                fullWidth
+                {...register('youtube', {
+                  validate (link) {
+                    const trimmed = link.trim()
+                    if (!trimmed) return undefined
+                    const { id, service } = getVideoId(trimmed)
+                    if (!id || service !== 'youtube') {
+                      return '정상적인 YouTube 동영상 주소를 입력해주세요.'
+                    }
+                    return undefined
+                  }
+                })}
+              />
+            )}
+          />
+        </Box>
+        <Box sx={{ mt: 5}}>
+          {
+            youtube 
+            ? 
+              <YouTube
+                title="유튜브"
+                videoId={getVideoId(youtube).id ?? ''}
+                opts={{
+                  width: '100%',
+                  height: '300px',
+                }}
+              />
+            :
+            <div>미리보기 준비중....</div>
+          }
         </Box>
       </div>
     </div>
