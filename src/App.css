@@ -48,3 +48,48 @@
   margin: 0 auto;
   width: 90%;
 }
+
+.video-group-category {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  cursor: pointer;
+  background: #FEF08A;
+  padding: 10px;
+  margin: 25px 0;
+  border-radius: 10px;
+}
+
+.video-card {
+  width: 350px;
+  height: 200px;
+  margin: 0 10px;
+}
+
+.video-card-header,
+.video-card-center,
+.video-card-footer
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.video-card-str-btn {
+  color: #1976D2;
+  cursor: pointer;
+}
+
+a,
+a:visited{
+  color: #1976D2;
+  text-decoration: none;
+}
+
+.dialog-modal {
+  width: 550px;
+  height: 500px;
+}

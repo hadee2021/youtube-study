@@ -15,7 +15,6 @@ import {
 } from "@react-query-firebase/firestore"
 import { hash } from './util'
 import { useMemo } from 'react'
-import { useDeepCompareMemo } from 'use-deep-compare'
 import { groupBy } from 'lodash'
 
 /* 기본 세팅 */
@@ -99,16 +98,6 @@ export const useVideoList = (roomId: string) => {
   const videoCollectionRef = getVideoCollectionRef(roomId)
 
   let groupField = 'category'
-
-  // const queryConstraints = useDeepCompareMemo(() => {
-  //   const constraints: QueryConstraint[] = []
-
-  //   if (groupField) {
-  //     constraints.push(orderBy(groupField))
-  //   }
-  //   constraints.push(orderBy('orderNumer', 'asc'))
-  //   return constraints
-  // }, [groupField])
 
   const constraints: QueryConstraint[] = []
   constraints.push(orderBy('orderNumer', 'asc'))

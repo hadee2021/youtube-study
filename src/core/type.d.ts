@@ -9,6 +9,7 @@ declare interface Room {
 }
 
 declare interface Video {
+  id?: string
   orderNumer: number
   title: string
   category: string
