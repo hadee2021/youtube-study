@@ -1,104 +1,19 @@
-import RoomHeader from './RoomHeader'
-import { Controller, useForm } from 'react-hook-form'
+import { Control, Controller, UseFormRegister} from 'react-hook-form'
 import { Box, TextField, Tooltip } from '@mui/material'
 import YouTube from 'react-youtube'
 import getVideoId from 'get-video-id'
-import { useParams } from 'react-router-dom'
-import { useEditVideo } from '../core/query'
-import { useRecoilState } from 'recoil'
-import { VideoDataAtom } from '../core/Atom'
-import VideoForm from './VideoForm'
-import { useDeepCompareEffect } from 'use-deep-compare'
 
-interface PropsForm {
-  openForm: boolean,
-  setOpenForm: React.Dispatch<React.SetStateAction<boolean>>
+interface Props {
+  control: Control<Video, any>
+  register: UseFormRegister<Video>
+  youtube: string 
 }
 
-interface ContentForm {
-  orderNumer: number
-  title: string
-  category: string
-  memo: string
-  youtube: string
-}
 
-const RoomContentForm = ({openForm, setOpenForm}: PropsForm) => {
-  //// 수정 ////
-  const[videoData, setVideoData] = useRecoilState(VideoDataAtom)
-  console.log('videoData', videoData)
-  ////////////////////////
-  const {
-    control,
-    watch,
-    formState,
-    register,
-    handleSubmit,
-  } = useForm<ContentForm>({
-    mode: 'all',
-    defaultValues: {
-      orderNumer: 0,
-      title: '',
-      category: '',
-      memo: '',
-      youtube: ''
-    },
-  })
-  const { youtube } = watch()
-
-  const { id: roomId = '' } = useParams()
-
-  let videoUpateId
-  if(videoData.id !== '') {
-    videoUpateId = videoData.id
-  }
-  else if(videoData.id === '') {
-    videoUpateId = undefined
-  }
-
-  const {
-    editVideo,
-    isLoading: isSaving,
-    videoDocId
-  }= useEditVideo(roomId,videoUpateId) // 추가
-
-  const isLoading = isSaving
-
-  const onSave = handleSubmit(form => {
-    if(isLoading) return
-    const {
-      orderNumer, title, category,
-      memo, youtube,
-      ...restForm
-    } = form
-
-    const nextVideoForm = {
-      orderNumer: Number.parseInt(String(orderNumer), 10),
-      title: title.trim(),
-      category: category.trim(),
-      memo: memo.trim(),
-      youtube: youtube.trim(),
-      ...restForm,
-    }
-
-    editVideo(nextVideoForm)
-    
-  })
-
+const VideoForm = ({control, register, youtube}: Props) => {
+  
   return (
-    <div className="room-content-form-layout">
-      <RoomHeader 
-        consumer="addCard"
-        toggle={openForm} 
-        setToggle={setOpenForm}
-        onSave={onSave}
-      />
-      <VideoForm 
-        control={control}
-        register={register}
-        youtube={youtube}
-      />
-      {/* <div className="room-content-form">
+    <div className="room-content-form">
         <Box>
           <Controller 
             name="orderNumer"
@@ -244,9 +159,8 @@ const RoomContentForm = ({openForm, setOpenForm}: PropsForm) => {
             <div>미리보기 준비중....</div>
           }
         </Box>
-      </div> */}
-    </div>
+      </div>
   )
 }
 
-export default RoomContentForm
+export default VideoForm
