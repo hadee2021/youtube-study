@@ -25,7 +25,7 @@
   justify-content: space-between;
 }
 
-.room-content,
+.room-content-center-layout,
 .room-content-form-layout {
   padding-top: 100px;
   height: 89vh;
@@ -34,7 +34,17 @@
   background-color: #FEFCE8;
 }
 
-.room-content-form {
+.room-content-form
+{
   margin: 0 auto;
   width: 45%;
+}
+
+.room-content-center-layout {
+  background-color: #F6F7F9;
+}
+
+.room-content-center {
+  margin: 0 auto;
+  width: 90%;
 }

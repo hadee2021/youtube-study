@@ -4,7 +4,9 @@ import {
   collection,
   where,
   query,
-  doc
+  doc,
+  QueryConstraint,
+  orderBy
 } from 'firebase/firestore'
 import { 
   useFirestoreQueryData,
@@ -12,12 +14,18 @@ import {
   useFirestoreDocumentData
 } from "@react-query-firebase/firestore"
 import { hash } from './util'
+import { useMemo } from 'react'
+import { useDeepCompareMemo } from 'use-deep-compare'
+import { groupBy } from 'lodash'
 
 /* 기본 세팅 */
 
 const ROOT = 'yotubes'
+const VIDEO_LIST = 'Video'
 const roomConverter = getDefaultConverter<Room>()
+const videoConverter = getDefaultConverter<Video>()
 const EMPTY_ROOM_ID = 'EMPTY_ROOM_ID'
+const EMPTY_VIDEO_ID = 'EMPTY_VIDEO_ID'
 
 const getRoomCollectionRef = () => (
   collection(fireStore, ROOT).withConverter(roomConverter)
@@ -27,6 +35,13 @@ const getRoomDocRef = (roomId: string) => (
   doc(fireStore, ROOT, roomId || EMPTY_ROOM_ID).withConverter(roomConverter)
 )
 
+const getVideoCollectionRef = (roomId: string) => (
+  collection(fireStore, ROOT, roomId || EMPTY_ROOM_ID, VIDEO_LIST).withConverter(videoConverter)
+)
+const getVideoDocRef = (roomId: string, videoId: string) => (
+  doc(fireStore, ROOT, roomId || EMPTY_ROOM_ID, VIDEO_LIST, videoId || EMPTY_VIDEO_ID)
+    .withConverter(videoConverter)
+)
 // Start에서 사용
 
 /* Room 확인 */
@@ -79,3 +94,70 @@ export const useRoom = (roomId: string) => {
   return { room, ...result }
 }
 
+/* Video 가져오기 */
+export const useVideoList = (roomId: string) => {
+  const videoCollectionRef = getVideoCollectionRef(roomId)
+
+  let groupField = 'category'
+
+  // const queryConstraints = useDeepCompareMemo(() => {
+  //   const constraints: QueryConstraint[] = []
+
+  //   if (groupField) {
+  //     constraints.push(orderBy(groupField))
+  //   }
+  //   constraints.push(orderBy('orderNumer', 'asc'))
+  //   return constraints
+  // }, [groupField])
+
+  const constraints: QueryConstraint[] = []
+  constraints.push(orderBy('orderNumer', 'asc'))
+  const queryConstraints = constraints
+
+  const ref = query(
+    videoCollectionRef,
+    ...queryConstraints,
+  )
+
+  const {
+    data: videoList = [],
+    dataUpdatedAt,
+    ...result
+  } = useFirestoreQueryData(
+    [ROOT, roomId, VIDEO_LIST],
+    ref,
+    { subscribe: true },
+    { enabled: Boolean(roomId) },
+  )
+
+  return useMemo(() => {
+
+    return {
+      videoList,
+      groupByWithFilter () {
+        return groupBy(videoList, groupField)
+      },
+      dataUpdatedAt,
+      ...result,
+    }
+  },[dataUpdatedAt])
+
+}
+
+
+
+/* Video 신규등록 및 수정 */
+export const useEditVideo = (roomId: string, videoId?: string) => {
+  const videoDocId = videoId ?? nanoid(5)
+  const videoDocRef = getVideoDocRef(roomId, videoDocId)
+
+  const { mutate, ...result } = useFirestoreDocumentMutation(videoDocRef, { merge: true })
+
+  return {
+    ...result,
+    videoDocId,
+    editVideo (videoForm: Video, options?: Parameters<typeof mutate>[1]) {
+      mutate({ ...videoForm, id: videoDocId }, options)
+    },
+  }
+}

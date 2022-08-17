@@ -3,6 +3,8 @@ import { Controller, useForm } from 'react-hook-form'
 import { Box, TextField, Tooltip } from '@mui/material'
 import YouTube from 'react-youtube'
 import getVideoId from 'get-video-id'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useEditVideo } from '../core/query'
 
 interface PropsForm {
   openAdd: boolean,
@@ -36,7 +38,35 @@ const RoomContentForm = ({openAdd, setOpenAdd}: PropsForm) => {
   })
   const { youtube } = watch()
 
-  const onSave = handleSubmit(() => {})
+  const { id: roomId = '' } = useParams()
+  const {
+    editVideo,
+    isLoading: isSaving,
+    videoDocId
+  }= useEditVideo(roomId) // 추가
+
+  const isLoading = isSaving
+
+  const onSave = handleSubmit(form => {
+    if(isLoading) return
+    const {
+      orderNumer, title, category,
+      memo, youtube,
+      ...restForm
+    } = form
+
+    const nextVideoForm = {
+      orderNumer: Number.parseInt(String(orderNumer), 10),
+      title: title.trim(),
+      category: category.trim(),
+      memo: memo.trim(),
+      youtube: youtube.trim(),
+      ...restForm,
+    }
+
+    editVideo(nextVideoForm)
+    
+  })
 
   return (
     <div className="room-content-form-layout">
@@ -149,27 +179,30 @@ const RoomContentForm = ({openAdd, setOpenAdd}: PropsForm) => {
             {...register('memo')}
           />
         </Box>
-        <Box>
+        <Box sx={{ mt: 5}}>
           <Controller
             name="youtube"
             control={control}
-            render={({ field }) => (
-              <TextField
-                placeholder="e.g) https://www.youtube.com/watch?v=..."
-                variant="standard" 
-                fullWidth
-                {...register('youtube', {
-                  validate (link) {
-                    const trimmed = link.trim()
-                    if (!trimmed) return undefined
-                    const { id, service } = getVideoId(trimmed)
-                    if (!id || service !== 'youtube') {
-                      return '정상적인 YouTube 동영상 주소를 입력해주세요.'
+            render={({ fieldState }) => (
+              <Tooltip title="유튜브 링크 입력" placement="bottom">
+                <TextField
+                  error={Boolean(fieldState.error)}
+                  placeholder="e.g) https://www.youtube.com/watch?v=..."
+                  variant="standard" 
+                  fullWidth
+                  {...register('youtube', {
+                    validate (link) {
+                      const trimmed = link.trim()
+                      if (!trimmed) return undefined
+                      const { id, service } = getVideoId(trimmed)
+                      if (!id || service !== 'youtube') {
+                        return '정상적인 YouTube 동영상 주소를 입력해주세요.'
+                      }
+                      return undefined
                     }
-                    return undefined
-                  }
-                })}
-              />
+                  })}
+                />
+              </Tooltip>
             )}
           />
         </Box>

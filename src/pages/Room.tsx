@@ -33,6 +33,7 @@ const Room = () => {
         :
         <RoomContentCenter 
           room={room}
+          roomId={roomId}
           openMenu={openMenu}
           setOpenMenu={setOpenMenu}
           openAddCard={openAddCard}
