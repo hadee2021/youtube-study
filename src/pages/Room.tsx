@@ -4,6 +4,9 @@ import { useState } from 'react'
 import RoomMenu from '../components/Setting/RoomMenu'
 import RoomContentForm from '../components/RoomContentForm'
 import RoomContentCenter from '../components/RoomContentCenter'
+import { useRecoilState } from 'recoil'
+import { openFormAtom, videoPlayOpenAtom } from '../core/Atom'
+import VideoPlay from '../components/VideoPlay'
 
 const Room = () => {
   const { id: roomId = '' } = useParams()
@@ -11,10 +14,11 @@ const Room = () => {
   console.log('room:', room)
 
   const[openMenu, setOpenMenu] = useState(false)
-  const[openAdd, setOpenAdd] = useState(false)
+  const[openForm, setOpenForm] = useRecoilState(openFormAtom)
+  const[openVideoPlay, setOpenVideoPlay] = useRecoilState(videoPlayOpenAtom)
 
   const openAddCard = () => {
-    setOpenAdd(true)
+    setOpenForm(true)
   }
 
   // 방 id 없으면 홈으로
@@ -22,13 +26,13 @@ const Room = () => {
     return <Navigate to="/" />
   }
   return (
-    <div className={openMenu ? "modal-background" : ""}>
+    <div className={openMenu || openVideoPlay ? "modal-background" : ""}>
       {
-        openAdd
+        openForm
         ? 
         <RoomContentForm 
-          openAdd={openAdd}
-          setOpenAdd={setOpenAdd}
+          openForm={openForm}
+          setOpenForm={setOpenForm}
         />
         :
         <RoomContentCenter 
@@ -42,6 +46,10 @@ const Room = () => {
       {
         openMenu &&
         <RoomMenu />
+      }
+      {
+        openVideoPlay &&
+        <VideoPlay />
       }
     </div>
   )

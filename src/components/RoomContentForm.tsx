@@ -5,10 +5,12 @@ import YouTube from 'react-youtube'
 import getVideoId from 'get-video-id'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useEditVideo } from '../core/query'
+import { useRecoilState } from 'recoil'
+import { openFormAtom, videoPlayOpenAtom, VideoDataAtom } from '../core/Atom'
 
 interface PropsForm {
-  openAdd: boolean,
-  setOpenAdd: React.Dispatch<React.SetStateAction<boolean>>
+  openForm: boolean,
+  setOpenForm: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 interface ContentForm {
@@ -19,7 +21,11 @@ interface ContentForm {
   youtube: string
 }
 
-const RoomContentForm = ({openAdd, setOpenAdd}: PropsForm) => {
+const RoomContentForm = ({openForm, setOpenForm}: PropsForm) => {
+  //// 수정 ////
+  const[videoData, setVideoData] = useRecoilState(VideoDataAtom)
+  console.log('videoData', videoData)
+  ////////////////////////
   const {
     control,
     watch,
@@ -43,7 +49,7 @@ const RoomContentForm = ({openAdd, setOpenAdd}: PropsForm) => {
     editVideo,
     isLoading: isSaving,
     videoDocId
-  }= useEditVideo(roomId) // 추가
+  }= useEditVideo(roomId, videoData?.id) // 추가
 
   const isLoading = isSaving
 
@@ -72,8 +78,8 @@ const RoomContentForm = ({openAdd, setOpenAdd}: PropsForm) => {
     <div className="room-content-form-layout">
       <RoomHeader 
         consumer="addCard"
-        toggle={openAdd} 
-        setToggle={setOpenAdd}
+        toggle={openForm} 
+        setToggle={setOpenForm}
         onSave={onSave}
       />
       <div className="room-content-form">
@@ -85,7 +91,7 @@ const RoomContentForm = ({openAdd, setOpenAdd}: PropsForm) => {
               required: "번호는 필수 입니다"
             }}
             render={({ fieldState }) => (
-              <Tooltip title="하나의 커리큘럼안의 영상순서" placement="bottom">
+              <Tooltip title="하나의 커리큘럼안의 영상순서(소수점 가능)" placement="bottom">
                 <TextField 
                   type="number"
                   error={Boolean(fieldState.error)}

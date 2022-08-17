@@ -56,8 +56,8 @@ interface PropsVideoGroup {
 
 const VideoGroup = ({category, videoList}:PropsVideoGroup) => {
   const [open, setOpen] = useState(true)
-  console.log('category', category)
-  console.log('videoList', videoList)
+  // console.log('category', category)
+  // console.log('videoList', videoList)
   return (
     <Box>
       <Box

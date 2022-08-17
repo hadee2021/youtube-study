@@ -93,3 +93,18 @@ a:visited{
   width: 550px;
   height: 500px;
 }
+
+.modal {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 1000px;
+  height: 600px;
+  background-color: white;
+}
+.modal > div:first-child {
+  display: flex;
+  justify-content: flex-end;
+  color: red;
+  cursor: pointer;
+}

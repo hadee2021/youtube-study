@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material'
 import YouTube from 'react-youtube'
 import getVideoId from 'get-video-id'
-import { EditOutlined, YouTube as YouTubeIcon } from '@mui/icons-material'
+import {  YouTube as YouTubeIcon } from '@mui/icons-material'
 
 interface PropsVideoModal {
   label?: string
