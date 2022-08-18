@@ -11,7 +11,8 @@ import {
 import { 
   useFirestoreQueryData,
   useFirestoreDocumentMutation,
-  useFirestoreDocumentData
+  useFirestoreDocumentData,
+  useFirestoreDocumentDeletion
 } from "@react-query-firebase/firestore"
 import { hash } from './util'
 import { useMemo } from 'react'
@@ -149,4 +150,26 @@ export const useEditVideo = (roomId: string, videoId?: string) => {
       mutate({ ...videoForm, id: videoDocId }, options)
     },
   }
+}
+
+/* Video 삭제 */
+export const useDeleteVideo = (roomId: string, videoId = EMPTY_VIDEO_ID) => {
+  const videoDocRef = getVideoDocRef(roomId, videoId)
+  const {
+    refetch: refetchVideoList,
+  } = useVideoList(roomId)
+  const { mutate, ...result } = useFirestoreDocumentDeletion(videoDocRef, {
+    onSuccess() {
+      refetchVideoList()
+    }
+  })
+
+  return {
+    ...result,
+    deleteVideo (options?: Parameters<typeof mutate>[1]) {
+      if (!videoId || videoId === EMPTY_VIDEO_ID) return
+      mutate(undefined, options)
+    },
+  }
+
 }

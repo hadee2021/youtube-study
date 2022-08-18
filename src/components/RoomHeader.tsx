@@ -11,7 +11,7 @@ interface Props {
   setToggle: React.Dispatch<React.SetStateAction<boolean>>,
   onSave?: (e?: React.BaseSyntheticEvent<object, any, any> | undefined) => Promise<void>
 }
-const RoomHeader = ({ consumer, title = '', toggle, setToggle, onSave }: Props) => {
+const RoomHeader = ({ consumer, title = '',toggle, setToggle, onSave }: Props) => {
   const[roomHeaderConsumer, setRoomHeaderConsumer] = useRecoilState(roomHeaderConsumerAtom)
   const onClickSave = () => {
     if(onSave === undefined) return

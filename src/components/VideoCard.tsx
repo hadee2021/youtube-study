@@ -1,11 +1,13 @@
 import { Card, CardContent,
   IconButton, Box, Typography
 } from '@mui/material'
-import { EditOutlined, YouTube as YouTubeIcon } from '@mui/icons-material'
+import { EditOutlined, YouTube as YouTubeIcon, Close } from '@mui/icons-material'
 import VideoModal from './VideoModal'
 import { useRecoilState } from 'recoil'
 import { openFormAtom, videoPlayOpenAtom, VideoDataAtom, videoUpdateAtom, roomHeaderConsumerAtom } from '../core/Atom'
 import { useState } from 'react'
+import { useDeleteVideo } from '../core/query'
+import { useParams } from 'react-router-dom'
 
 interface PropsVideoCard {
   video: Video
@@ -41,7 +43,20 @@ const VideoCard = ({video}: PropsVideoCard) => {
     setVideoUpdate(true)
     setRoomHeaderConsumer('updateCard')
   }
-  
+
+  const { id: roomId = '' } = useParams()
+
+  const {
+    deleteVideo,
+    isLoading: isDeleting,
+  }= useDeleteVideo(roomId, video.id)
+
+  const onDelete = () => {
+    if (isDeleting) return
+    deleteVideo()
+  }
+
+
   return (
     <>
       <Card className="video-card">
@@ -51,13 +66,22 @@ const VideoCard = ({video}: PropsVideoCard) => {
               <Typography fontWeight="bold">
                 {video.orderNumer}
               </Typography>
-              <IconButton
-                size="small" 
-                color="secondary"
-                onClick={() => openVideoDetail(video)}
-              >
-                <EditOutlined fontSize="small"/>
-              </IconButton>
+              <Box>
+                <IconButton
+                  size="small" 
+                  color="secondary"
+                  onClick={() => openVideoDetail(video)}
+                >
+                  <EditOutlined fontSize="small"/>
+                </IconButton>
+                <IconButton
+                  size="small"
+                  onClick={onDelete}
+                  sx={{marginLeft : 1}}
+                >
+                  <Close fontSize="small"/>
+                </IconButton>
+              </Box>
             </Box>
             <Box className="video-card-center">
               <Typography fontWeight="bold">

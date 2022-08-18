@@ -4,7 +4,7 @@ import { Box, TextField, Tooltip } from '@mui/material'
 import YouTube from 'react-youtube'
 import getVideoId from 'get-video-id'
 import { useParams } from 'react-router-dom'
-import { useEditVideo } from '../core/query'
+import { useDeleteVideo, useEditVideo } from '../core/query'
 import { useRecoilState } from 'recoil'
 import { VideoDataAtom, videoUpdateAtom, roomHeaderConsumerAtom } from '../core/Atom'
 import VideoForm from './VideoForm'
@@ -82,7 +82,7 @@ const RoomContentForm = ({openForm, setOpenForm}: PropsForm) => {
     editVideo,
     isLoading: isSaving,
     videoDocId
-  }= useEditVideo(roomId,videoUpateId) // 추가
+  }= useEditVideo(roomId,videoUpateId) // 추가 및 수정
 
   const isLoading = isSaving
 
@@ -108,6 +108,7 @@ const RoomContentForm = ({openForm, setOpenForm}: PropsForm) => {
     editVideo(nextVideoForm)
     setRoomHeaderConsumer('')
   })
+
 
   return (
     <div className="room-content-form-layout">
