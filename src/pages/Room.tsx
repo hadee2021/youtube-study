@@ -36,7 +36,7 @@ const Room = () => {
     return <Navigate to="/" />
   }
   return (
-    <div className={openMenu || openVideoPlay ? "modal-background" : ""}>
+    <div className={openMenu || openVideoPlay ? "" : ""}>
       {
         openForm
         ? 
@@ -61,6 +61,7 @@ const Room = () => {
         openVideoPlay &&
         <VideoPlay />
       }
+      <div className={openVideoPlay || openMenu ? "modal-background": ""}></div>
     </div>
   )
 }
