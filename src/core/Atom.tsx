@@ -21,3 +21,8 @@ export const VideoDataAtom = atom({
     youtube:''
   }
 })
+
+export const videoUpdateAtom = atom({
+  key: 'videoUpdate',
+  default: false
+})

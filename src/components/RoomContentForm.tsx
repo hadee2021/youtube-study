@@ -6,7 +6,7 @@ import getVideoId from 'get-video-id'
 import { useParams } from 'react-router-dom'
 import { useEditVideo } from '../core/query'
 import { useRecoilState } from 'recoil'
-import { VideoDataAtom } from '../core/Atom'
+import { VideoDataAtom, videoUpdateAtom } from '../core/Atom'
 import VideoForm from './VideoForm'
 import { useDeepCompareEffect } from 'use-deep-compare'
 
@@ -27,23 +27,45 @@ const RoomContentForm = ({openForm, setOpenForm}: PropsForm) => {
   //// 수정 ////
   const[videoData, setVideoData] = useRecoilState(VideoDataAtom)
   console.log('videoData', videoData)
+  const[videoUpdate, setVideoUpdate] = useRecoilState(videoUpdateAtom)
   ////////////////////////
-  const {
-    control,
-    watch,
-    formState,
-    register,
-    handleSubmit,
-  } = useForm<ContentForm>({
+
+  /** 시작*/
+  const videoForm = useForm<Video>({
     mode: 'all',
-    defaultValues: {
-      orderNumer: 0,
-      title: '',
-      category: '',
-      memo: '',
-      youtube: ''
-    },
+    reValidateMode: 'onChange',
   })
+  useDeepCompareEffect(() => {
+    if(!videoUpdate) return
+    videoForm.reset({
+      orderNumer: videoData.orderNumber !== 0 ? videoData.orderNumber :0,
+      title: videoData.title !== '' ? videoData.title :'',
+      category: videoData.category !== '' ? videoData.category : '',
+      memo: videoData.memo !== '' ? videoData.memo : '',
+      youtube: videoData.youtube !== '' ? videoData.youtube : '',
+    })
+  },[videoData])
+  const { handleSubmit, watch } = videoForm
+  /**끝 */
+
+
+  // const {
+  //   control,
+  //   watch,
+  //   formState,
+  //   register,
+  //   handleSubmit,
+  //   setValue,
+  // } = useForm<ContentForm>({
+  //   mode: 'all',
+  //   defaultValues: {
+  //     orderNumer: 0,
+  //     title: '',
+  //     category: '',
+  //     memo: '',
+  //     youtube: ''
+  //   },
+  // })
   const { youtube } = watch()
 
   const { id: roomId = '' } = useParams()
@@ -94,10 +116,10 @@ const RoomContentForm = ({openForm, setOpenForm}: PropsForm) => {
         onSave={onSave}
       />
       <VideoForm 
-        control={control}
-        register={register}
+        videoForm={videoForm}
         youtube={youtube}
       />
+      
       {/* <div className="room-content-form">
         <Box>
           <Controller 
