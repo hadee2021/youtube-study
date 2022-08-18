@@ -12,7 +12,8 @@ import {
   useFirestoreQueryData,
   useFirestoreDocumentMutation,
   useFirestoreDocumentData,
-  useFirestoreDocumentDeletion
+  useFirestoreDocumentDeletion,
+  useFirestoreTransaction
 } from "@react-query-firebase/firestore"
 import { hash } from './util'
 import { useMemo } from 'react'
@@ -172,4 +173,28 @@ export const useDeleteVideo = (roomId: string, videoId = EMPTY_VIDEO_ID) => {
     },
   }
 
+}
+
+/* Room 삭제 */
+export const useDeleteRoom = (roomId: string = EMPTY_ROOM_ID) => {
+  const roomDocRef = getRoomDocRef(roomId)
+  const { videoList } = useVideoList(roomId)
+
+  const {
+    mutate: deleteRoom,
+    ...result
+  } = useFirestoreTransaction(fireStore, async tsx => {
+    videoList.forEach((video: { id: string }) => {
+      const videoRef = getVideoDocRef(roomId, video.id)
+      tsx.delete(videoRef)
+    })
+    tsx.delete(roomDocRef)
+  })
+
+  return {
+    ...result,
+    deleteRoom (options?: Parameters<typeof deleteRoom>[1]) {
+      deleteRoom(undefined, options)
+    }
+  }
 }
