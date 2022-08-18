@@ -26,3 +26,8 @@ export const videoUpdateAtom = atom({
   key: 'videoUpdate',
   default: false
 })
+
+export const roomHeaderConsumerAtom = atom({
+  key: 'roomConsumer',
+  default: ''
+})

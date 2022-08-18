@@ -5,7 +5,7 @@ import RoomMenu from '../components/Setting/RoomMenu'
 import RoomContentForm from '../components/RoomContentForm'
 import RoomContentCenter from '../components/RoomContentCenter'
 import { useRecoilState } from 'recoil'
-import { openFormAtom, videoPlayOpenAtom, VideoDataAtom } from '../core/Atom'
+import { openFormAtom, videoPlayOpenAtom, VideoDataAtom, roomHeaderConsumerAtom } from '../core/Atom'
 import VideoPlay from '../components/VideoPlay'
 
 const Room = () => {
@@ -17,6 +17,7 @@ const Room = () => {
   const[openForm, setOpenForm] = useRecoilState(openFormAtom)
   const[openVideoPlay, setOpenVideoPlay] = useRecoilState(videoPlayOpenAtom)
   const[videoData, setVideoData] = useRecoilState(VideoDataAtom)
+  const[roomHeaderConsumer, setRoomHeaderConsumer] = useRecoilState(roomHeaderConsumerAtom)
   const openAddCard = () => {
     setOpenForm(true)
     setVideoData({...videoData,
@@ -27,6 +28,7 @@ const Room = () => {
       memo:'',
       youtube:''
     })
+    setRoomHeaderConsumer('addCard')
   }
 
   // 방 id 없으면 홈으로

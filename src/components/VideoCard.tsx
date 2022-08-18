@@ -4,7 +4,7 @@ import { Card, CardContent,
 import { EditOutlined, YouTube as YouTubeIcon } from '@mui/icons-material'
 import VideoModal from './VideoModal'
 import { useRecoilState } from 'recoil'
-import { openFormAtom, videoPlayOpenAtom, VideoDataAtom, videoUpdateAtom } from '../core/Atom'
+import { openFormAtom, videoPlayOpenAtom, VideoDataAtom, videoUpdateAtom, roomHeaderConsumerAtom } from '../core/Atom'
 import { useState } from 'react'
 
 interface PropsVideoCard {
@@ -17,6 +17,7 @@ const VideoCard = ({video}: PropsVideoCard) => {
   const[openVideoPlay, setOpenVideoPlay] = useRecoilState(videoPlayOpenAtom)
   const[videoData, setVideoData] = useRecoilState(VideoDataAtom)
   const[videoUpdate, setVideoUpdate] = useRecoilState(videoUpdateAtom)
+  const[roomHeaderConsumer, setRoomHeaderConsumer] = useRecoilState(roomHeaderConsumerAtom)
   const openVideo = () => {
     setOpenVideoPlay(true)
     setVideoData({
@@ -38,6 +39,7 @@ const VideoCard = ({video}: PropsVideoCard) => {
       youtube: video.youtube
     })
     setVideoUpdate(true)
+    setRoomHeaderConsumer('updateCard')
   }
   
   return (

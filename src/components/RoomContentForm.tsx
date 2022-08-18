@@ -6,7 +6,7 @@ import getVideoId from 'get-video-id'
 import { useParams } from 'react-router-dom'
 import { useEditVideo } from '../core/query'
 import { useRecoilState } from 'recoil'
-import { VideoDataAtom, videoUpdateAtom } from '../core/Atom'
+import { VideoDataAtom, videoUpdateAtom, roomHeaderConsumerAtom } from '../core/Atom'
 import VideoForm from './VideoForm'
 import { useDeepCompareEffect } from 'use-deep-compare'
 
@@ -86,6 +86,8 @@ const RoomContentForm = ({openForm, setOpenForm}: PropsForm) => {
 
   const isLoading = isSaving
 
+  const[roomHeaderConsumer, setRoomHeaderConsumer] = useRecoilState(roomHeaderConsumerAtom)
+
   const onSave = handleSubmit(form => {
     if(isLoading) return
     const {
@@ -104,7 +106,7 @@ const RoomContentForm = ({openForm, setOpenForm}: PropsForm) => {
     }
 
     editVideo(nextVideoForm)
-    
+    setRoomHeaderConsumer('')
   })
 
   return (
