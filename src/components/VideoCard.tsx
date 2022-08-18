@@ -49,7 +49,7 @@ const VideoCard = ({video}: PropsVideoCard) => {
   const {
     deleteVideo,
     isLoading: isDeleting,
-  }= useDeleteVideo(roomId, video.id)
+  }= useDeleteVideo(roomId, video.id) //삭제
 
   const onDelete = () => {
     if (isDeleting) return

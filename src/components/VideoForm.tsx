@@ -1,39 +1,21 @@
-import { Control, Controller, UseFormReturn, UseFormRegister, UseFormSetValue} from 'react-hook-form'
+import { Controller, UseFormReturn} from 'react-hook-form'
 import { Box, TextField, Tooltip } from '@mui/material'
 import YouTube from 'react-youtube'
 import getVideoId from 'get-video-id'
-import { useVideoList } from '../core/query'
-import { useParams } from 'react-router-dom'
 
-// interface Props {
-//   control: Control<Video, any>
-//   register: UseFormRegister<Video>
-//   youtube: string 
-//   setValue: UseFormSetValue<Video>
-// }
 
-/** */
 interface Props {
   videoForm: UseFormReturn<Video>
   youtube: string
 }
-/** */
 
 const VideoForm = ({videoForm, youtube}: Props) => {
 
-  /** */
   const {
     control,
     register,
-    watch,
-    setValue,
-    formState: { errors = {} },
-    trigger,
-    setFocus,
   } = videoForm
-  const { id: roomId = '' } = useParams()
-  const { videoList } = useVideoList(roomId)
-  /** */
+
   return (
     <div className="room-content-form">
         <Box>
