@@ -36,7 +36,7 @@ const Room = () => {
     return <Navigate to="/" />
   }
   return (
-    <div className={openMenu || openVideoPlay ? "" : ""}>
+    <div>
       {
         openForm
         ? 

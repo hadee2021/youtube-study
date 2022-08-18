@@ -28,7 +28,7 @@ const RoomContentCenter = ({room, roomId, openMenu, setOpenMenu, openAddCard}: P
   // console.log('videoGroupEntries:', videoGroupEntries)
   const[openVideoPlay, setOpenVideoPlay] = useRecoilState(videoPlayOpenAtom)
   return (
-    <div className={openVideoPlay ? "" :"room-content-center-layout"}>
+    <div className="room-content-center-layout">
       <RoomHeader 
         title={room?.name} 
         toggle={openMenu} 

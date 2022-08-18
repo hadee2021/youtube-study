@@ -8,7 +8,7 @@
 
 .room-menu {
   width: 350px;
-  height: 820px;
+  height: 100vh;
   background: #FEFCE8;
   position: fixed;
   top: 56px;
@@ -24,7 +24,7 @@
 .room-content-center-layout,
 .room-content-form-layout {
   padding-top: 100px;
-  min-height: 1000px;
+  min-height: 100vh;
   overflow: auto;
 }
 .room-content-form-layout {
@@ -94,8 +94,8 @@ a:visited{
   background: rgba(0, 0, 0, 0.5);
   top: 6%;
   left: 0%;
-  width: 1440px;
-  height: 1000px;
+  width: 100vw;
+  height: 100vh;
   z-index: 1200;
 }
 
