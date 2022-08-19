@@ -34,5 +34,5 @@ Link: https://simpe-youtube-study.netlify.app/
 
 ### Backend/Hosting
 ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
-[![Netlify](https://app.netlify.com/api/v1/badges/8463e051-d15b-4423-b2eb-bebe64d1743f/deploy-status)](https://app.netlify.com/sites/tistory-ppm/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f15f03f9-55d8-4adc-97d5-f6e085141610/deploy-status)](https://app.netlify.com/sites/simpe-youtube-study/deploys)
 
