@@ -5,7 +5,6 @@ import { EditOutlined, YouTube as YouTubeIcon, Close } from '@mui/icons-material
 import VideoModal from './VideoModal'
 import { useRecoilState } from 'recoil'
 import { openFormAtom, videoPlayOpenAtom, VideoDataAtom, videoUpdateAtom, roomHeaderConsumerAtom } from '../core/Atom'
-import { useState } from 'react'
 import { useDeleteVideo } from '../core/query'
 import { useParams } from 'react-router-dom'
 
@@ -14,7 +13,6 @@ interface PropsVideoCard {
 }
 
 const VideoCard = ({video}: PropsVideoCard) => {
-  const [open, setOpen] = useState(false)
   const[openForm, setOpenForm] = useRecoilState(openFormAtom)
   const[openVideoPlay, setOpenVideoPlay] = useRecoilState(videoPlayOpenAtom)
   const[videoData, setVideoData] = useRecoilState(VideoDataAtom)
@@ -29,7 +27,6 @@ const VideoCard = ({video}: PropsVideoCard) => {
     })
   }
   const openVideoDetail = (video: Video) => {
-    console.log('video:', video)
     setOpenForm(true)
     setVideoData({
       ...videoData,

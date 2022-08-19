@@ -13,10 +13,10 @@ interface Props {
 }
 const RoomHeader = ({ consumer, title = '',toggle, setToggle, onSave }: Props) => {
   const[roomHeaderConsumer, setRoomHeaderConsumer] = useRecoilState(roomHeaderConsumerAtom)
+
   const onClickSave = () => {
     if(onSave === undefined) return
     onSave()
-    console.log('추가')
     setToggle(!toggle)
   }
   const goToBack = () => {
@@ -40,32 +40,32 @@ const RoomHeader = ({ consumer, title = '',toggle, setToggle, onSave }: Props) =
           }
           { roomHeaderConsumer === 'addCard' &&
             <>
-            <IconButton onClick={goToBack}>
-              <Clear htmlColor="white"/>
-            </IconButton>
-            <Typography>
-              새 커리큘럼 추가
-            </Typography>
-            <div className="save-btn">
-              <IconButton onClick={onClickSave}>
-                <SaveIcon htmlColor="white"/>
+              <IconButton onClick={goToBack}>
+                <Clear htmlColor="white"/>
               </IconButton>
-            </div>
+              <Typography>
+                새 커리큘럼 추가
+              </Typography>
+              <div className="save-btn">
+                <IconButton onClick={onClickSave}>
+                  <SaveIcon htmlColor="white"/>
+                </IconButton>
+              </div>
             </>
           }
           { roomHeaderConsumer === 'updateCard' &&
             <>
-            <IconButton onClick={goToBack}>
-              <Clear htmlColor="white"/>
-            </IconButton>
-            <Typography>
-              커리큘럼 수정
-            </Typography>
-            <div className="save-btn">
-              <IconButton onClick={onClickSave}>
-                <SaveIcon htmlColor="white"/>
+              <IconButton onClick={goToBack}>
+                <Clear htmlColor="white"/>
               </IconButton>
-            </div>
+              <Typography>
+                커리큘럼 수정
+              </Typography>
+              <div className="save-btn">
+                <IconButton onClick={onClickSave}>
+                  <SaveIcon htmlColor="white"/>
+                </IconButton>
+              </div>
             </>
           }
         </Toolbar>

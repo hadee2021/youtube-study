@@ -3,7 +3,6 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { useState } from "react"
 import VideoCard from './VideoCard'
-
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 
@@ -31,7 +30,7 @@ interface VideoListProps {
   videoList: Video[]
 }
 
-function VideoList({videoList}: VideoListProps) {
+function VideoList({ videoList }: VideoListProps) {
   return (
     <Box>
       <Carousel responsive={responsive}>
@@ -46,9 +45,6 @@ function VideoList({videoList}: VideoListProps) {
   )
 }
 
-
-
-
 interface PropsVideoGroup {
   category: string
   videoList: Video[]
@@ -56,8 +52,7 @@ interface PropsVideoGroup {
 
 const VideoGroup = ({category, videoList}:PropsVideoGroup) => {
   const [open, setOpen] = useState(true)
-  // console.log('category', category)
-  // console.log('videoList', videoList)
+
   return (
     <Box>
       <Box

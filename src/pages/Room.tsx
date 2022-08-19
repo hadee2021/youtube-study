@@ -11,7 +11,6 @@ import VideoPlay from '../components/VideoPlay'
 const Room = () => {
   const { id: roomId = '' } = useParams()
   const { room } = useRoom(roomId)
-  console.log('room:', room)
 
   const[openMenu, setOpenMenu] = useState(false)
   const[openForm, setOpenForm] = useRecoilState(openFormAtom)

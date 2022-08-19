@@ -1,12 +1,7 @@
 import { fireStore, getDefaultConverter } from '../core/firestore'
 import { nanoid } from 'nanoid'
 import { 
-  collection,
-  where,
-  query,
-  doc,
-  QueryConstraint,
-  orderBy
+  collection, where, query, doc, QueryConstraint, orderBy
 } from 'firebase/firestore'
 import { 
   useFirestoreQueryData,
@@ -43,8 +38,8 @@ const getVideoDocRef = (roomId: string, videoId: string) => (
   doc(fireStore, ROOT, roomId || EMPTY_ROOM_ID, VIDEO_LIST, videoId || EMPTY_VIDEO_ID)
     .withConverter(videoConverter)
 )
-// Start에서 사용
 
+// Start에서 사용
 /* Room 확인 */
 export const useFindRoom = (roomName = '', roomPwd = '') => {
   const roomCollectionRef = getRoomCollectionRef()
@@ -84,7 +79,6 @@ export const useCreateRoom = () => {
 }
 
 // Room 에서 사용
-
 /* Room 상세 정보 */
 export const useRoom = (roomId: string) => {
   const roomDocRef = getRoomDocRef(roomId)

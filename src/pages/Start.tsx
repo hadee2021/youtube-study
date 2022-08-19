@@ -1,17 +1,8 @@
 import { Controller, useForm } from 'react-hook-form'
 import { useFindRoom, useCreateRoom } from '../core/query'
 import { useNavigate } from 'react-router-dom'
-import { 
-  Box,
-  TextField, 
-  Button, 
-  Typography,
-  IconButton,
-} from '@mui/material'
-import {
-  Lock,
-  LockOpen
-} from '@mui/icons-material'
+import { Box, TextField, Button, Typography, IconButton } from '@mui/material'
+import { Lock, LockOpen } from '@mui/icons-material'
 import { useState } from 'react'
 
 interface RoomForm {
@@ -110,7 +101,7 @@ const Start = () => {
               variant="standard"
               {...register('roomPwd')}
               fullWidth
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               InputProps={{
                 endAdornment: (
                   <IconButton

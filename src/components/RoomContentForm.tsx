@@ -1,10 +1,7 @@
 import RoomHeader from './RoomHeader'
-import { Controller, useForm } from 'react-hook-form'
-import { Box, TextField, Tooltip } from '@mui/material'
-import YouTube from 'react-youtube'
-import getVideoId from 'get-video-id'
+import { useForm } from 'react-hook-form'
 import { useParams } from 'react-router-dom'
-import { useDeleteVideo, useEditVideo } from '../core/query'
+import { useEditVideo } from '../core/query'
 import { useRecoilState } from 'recoil'
 import { VideoDataAtom, videoUpdateAtom, roomHeaderConsumerAtom } from '../core/Atom'
 import VideoForm from './VideoForm'
@@ -13,14 +10,6 @@ import { useDeepCompareEffect } from 'use-deep-compare'
 interface PropsForm {
   openForm: boolean,
   setOpenForm: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-interface ContentForm {
-  orderNumer: number
-  title: string
-  category: string
-  memo: string
-  youtube: string
 }
 
 const RoomContentForm = ({openForm, setOpenForm}: PropsForm) => {

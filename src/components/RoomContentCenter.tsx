@@ -4,8 +4,6 @@ import { Add } from '@mui/icons-material'
 import { useVideoList } from "../core/query"
 import { useMemo } from "react"
 import VideoGroup from "./VideoGroup"
-import { useRecoilState } from 'recoil'
-import { videoPlayOpenAtom } from '../core/Atom'
 
 interface PropsCenter {
   room: Room
@@ -24,9 +22,7 @@ const RoomContentCenter = ({room, roomId, openMenu, setOpenMenu, openAddCard}: P
     () => Object.entries(groupByWithFilter()),
     [videoList],
   )
-  // console.log('videoList:', videoList)
-  // console.log('videoGroupEntries:', videoGroupEntries)
-  const[openVideoPlay, setOpenVideoPlay] = useRecoilState(videoPlayOpenAtom)
+
   return (
     <div className="room-content-center-layout">
       <RoomHeader 

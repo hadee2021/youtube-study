@@ -5,7 +5,6 @@ import { useRecoilState } from 'recoil'
 import { videoPlayOpenAtom, VideoDataAtom } from '../core/Atom'
 
 
-
 const VideoPlay = () => {
   const[openVideoPlay, setOpenVideoPlay] = useRecoilState(videoPlayOpenAtom)
   const[videoData, setVideoData] = useRecoilState(VideoDataAtom)
