@@ -1,6 +1,6 @@
 # YOUTUBE-STUDY
 ## Objective
-Link: https://simpe-youtube-study.netlify.app/
+Link: https://simple-youtube-study.netlify.app/
 
 유튜브 영상으로 개인 공부를 하기 위해 커리큘럼을 구성하는 당신..!!   
 영상에 대해 진도표시와 메모를 추가하고 관리하고 싶은 당신!!
