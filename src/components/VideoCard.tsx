@@ -1,5 +1,5 @@
 import { Card, CardContent,
-  IconButton, Box, Typography
+  IconButton, Box, Typography, Tooltip
 } from '@mui/material'
 import { EditOutlined, YouTube as YouTubeIcon, Close } from '@mui/icons-material'
 import VideoModal from './VideoModal'
@@ -84,9 +84,11 @@ const VideoCard = ({video}: PropsVideoCard) => {
               </Box>
             </Box>
             <Box className="video-card-center">
-              <Typography fontWeight="bold">
-                {video.title}
-              </Typography>
+              <Tooltip title={video.title} placement="bottom">
+                <Typography fontWeight="bold" className="video-card-center-title">
+                  {video.title}
+                </Typography>
+              </Tooltip>
               <IconButton
                 onClick={openVideo}
               >
