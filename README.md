@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+# YOUTUBE-STUDY
+## Objective
+Link: https://simpe-youtube-study.netlify.app/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+유튜브 영상으로 개인 공부를 하기 위해 커리큘럼을 구성하는 당신..!!   
+영상에 대해 진도표시와 메모를 추가하고 관리하고 싶은 당신!!
+  
+이제는 **YouTube-Study** 로 커리큘럼을 구성하세요! 
+  
+단순히 영상만 모을 수 있는 유튜브 재생목록을 보고 
+아쉬운 점이 있어서 개발하게 되었습니다!!
 
-## Available Scripts
+의견 추가라던지 진도에 대한 내용이라던지 
+사설 인강 사이트 처럼 자신만의 **Comment** 를 추가 할 수 있습니다
+영상은 유튜브에서 제공합니다
+관리는 **YouTube-Study** 여기에서 하시면 됩니다!
+  
+당신의 독자적인 학습환경을 위해 비밀번호를 설정해서 Private 하게 만들수도 있습니다.  
+또한 같은 방이름으로 비밀번호를 달리하여 여러개의 방을 사용 할 수 있습니다
+  
+---
+## 개발 환경
+### Core Framework
+![React](https://img.shields.io/badge/react-20232a.svg?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/typescript-007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Redux](https://img.shields.io/badge/redux-593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white)
 
-In the project directory, you can run:
+### Design Library
+![MUI](https://img.shields.io/badge/MUI-0081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-38B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Backend/Hosting
+![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
