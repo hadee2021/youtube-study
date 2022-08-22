@@ -40,25 +40,6 @@ const getVideoDocRef = (roomId: string, videoId: string) => (
 )
 
 // Start에서 사용
-/* Room 확인 */
-export const useFindRoom = (roomName = '', roomPwd = '') => {
-  const roomCollectionRef = getRoomCollectionRef()
-  const roomCollectionQuery = query(
-    roomCollectionRef,
-    where('name', '==', roomName),
-    where('pwd', '==', hash(roomPwd)),
-  )
-  const {
-    data: roomList = [],
-    ...result
-  } = useFirestoreQueryData([ROOT, roomName, roomPwd], roomCollectionQuery)
-
-  return {
-    room: roomList[0],
-    ...result,
-  }
-}
-
 /* Room 생성 */
 export const useCreateRoom = () => {
   const roomId = nanoid(5)
@@ -75,6 +56,25 @@ export const useCreateRoom = () => {
         pwd: hash(roomPwd),
       })
     },
+  }
+}
+
+/* Room 확인 */
+export const useFindRoom = (roomName = '', roomPwd = '') => {
+  const roomCollectionRef = getRoomCollectionRef()
+  const roomCollectionQuery = query(
+    roomCollectionRef,
+    where('name', '==', roomName),
+    where('pwd', '==', hash(roomPwd)),
+  )
+  const {
+    data: roomList = [],
+    ...result
+  } = useFirestoreQueryData([ROOT, roomName, roomPwd], roomCollectionQuery)
+  console.log('roomList[0]:', roomList[0])
+  return {
+    room: roomList[0],
+    ...result,
   }
 }
 

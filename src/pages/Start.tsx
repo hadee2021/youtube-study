@@ -41,6 +41,7 @@ const Start = () => {
   } = useCreateRoom()
 
   const goToRoom = handleSubmit(() => {
+    console.log('room:', room)
     // 방이 없으면 새로 만든다
     if(!room) {
       createRoom(roomName.trim(), roomPwd)
