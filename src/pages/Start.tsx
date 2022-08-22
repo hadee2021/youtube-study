@@ -34,7 +34,7 @@ const Start = () => {
 
   /* 방으로 이동 */
   const navigate = useNavigate()
-  const { room } = useFindRoom(roomName.trim(), roomPwd)
+  const { room, isSuccess } = useFindRoom(roomName.trim(), roomPwd)
   const {
     createRoom,
     roomId: newRoomId
@@ -121,7 +121,9 @@ const Start = () => {
             size="large"
             sx={{mt: 2}}
             fullWidth
-            onClick={goToRoom}
+            onClick={() => {
+              if(isSuccess) goToRoom()
+            }}
           >
             방 입장
           </Button>

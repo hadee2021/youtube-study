@@ -69,11 +69,17 @@ export const useFindRoom = (roomName = '', roomPwd = '') => {
   )
   const {
     data: roomList = [],
+    isSuccess,
     ...result
-  } = useFirestoreQueryData([ROOT, roomName, roomPwd], roomCollectionQuery)
+  } = useFirestoreQueryData([ROOT, roomName, roomPwd], roomCollectionQuery, undefined, {
+    cacheTime: 0
+  })
+  // console.log('result:', result)
+
   console.log('roomList[0]:', roomList[0])
   return {
     room: roomList[0],
+    isSuccess,
     ...result,
   }
 }
