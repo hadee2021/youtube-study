@@ -107,6 +107,6 @@ Link: https://simple-youtube-study.netlify.app/
 
 
 
-## 감사합니다!
+
 
 
