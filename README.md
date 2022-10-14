@@ -37,3 +37,7 @@ Link: https://simple-youtube-study.netlify.app/
 ![Netlify Status](https://api.netlify.com/api/v1/badges/f15f03f9-55d8-4adc-97d5-f6e085141610/deploy-status)
 
 ---
+## 사용 방법
+### 초기 입장
+
+![첫 화면](https://user-images.githubusercontent.com/85422934/195775507-844f83df-e250-4d49-972a-b672743c89cd.png)
