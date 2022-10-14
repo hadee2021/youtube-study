@@ -40,4 +40,10 @@ Link: https://simple-youtube-study.netlify.app/
 ## 사용 방법
 ### 초기 입장
 
-![첫 화면](https://user-images.githubusercontent.com/85422934/195775507-844f83df-e250-4d49-972a-b672743c89cd.png)
+![첫 화면](https://user-images.githubusercontent.com/85422934/195775710-05aed1d6-0363-4f1e-8d08-7677805ab589.png)
+
+원하는 **방 이름**을 입력해주세요
+**private**를 원하거나 같은 방의 **반달**을 방지 하고 싶으면 비밀번호를 입력해주세요
+( 비밀번호는 방을 구분하기 위한 용도 입니다. )
+
+
