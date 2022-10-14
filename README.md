@@ -49,3 +49,17 @@ Link: https://simple-youtube-study.netlify.app/
 ( 비밀번호는 방을 구분하기 위한 용도 입니다. )
 
 
+### 메인 화면
+
+![메인 화면](https://user-images.githubusercontent.com/85422934/195776904-a6b393c6-96fa-47f6-9fe0-50d114672143.png)
+
+화면 우측 하단의 추가 버튼을 눌러서 강의를 추가 할 수 있습니다.
+
+### 강의 추가
+
+![youtube study form](https://user-images.githubusercontent.com/85422934/195777077-8799be2d-b361-4f53-a82a-9c3709945f44.png)
+
+양식에 영상 정보를 기록 할 수 있습니다.
+내용은 언제든지 수정 가능합니다.
+
+
