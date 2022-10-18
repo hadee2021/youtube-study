@@ -1,6 +1,7 @@
 declare module 'react-query'
 declare module 'sha1'
 declare module 'lodash'
+declare module 'styled-components'
 
 declare interface Room {
   id: string
