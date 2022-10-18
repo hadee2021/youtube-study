@@ -164,7 +164,7 @@ const Start = () => {
             <div>
               <p>YouTube로 공부 중 이신가요 ??!</p>
               <p>자신만의 커리큘럼을 구성할 수 있습니다.</p>
-              <p>Deomo 버전으로 체험해보세요!</p>
+              <p>Demo 버전으로 체험해보세요!</p>
             </div>
           </DemoDescript>
           <Button 
@@ -214,6 +214,7 @@ const DemoDescript = styled.div`
     background: #eee;
     border-radius: 8px;
     padding: 0 15px;
+    line-height: 1;
   }
 
 `
