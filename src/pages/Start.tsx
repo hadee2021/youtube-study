@@ -161,11 +161,13 @@ const Start = () => {
         { tab === 'demo' &&
         <Box>
           <DemoDescript>
-            <div>
-              <p>YouTube로 공부 중 이신가요 ??!</p>
-              <p>자신만의 커리큘럼을 구성할 수 있습니다.</p>
-              <p>Demo 버전으로 체험해보세요!</p>
-            </div>
+            
+              <span>
+                YouTube로 공부 중 이신가요 ??! <br/>
+                자신만의 커리큘럼을 구성할 수 있습니다. <br/>
+                Demo 버전으로 체험해보세요!
+              </span>
+            
           </DemoDescript>
           <Button 
             variant="contained"
@@ -205,16 +207,16 @@ const TabMenu = styled.div`
 `
 
 const DemoDescript = styled.div`
-  height: 107px;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  > div {
-    background: #eee;
-    border-radius: 8px;
-    padding: 0 15px;
-    line-height: 1;
-  }
-
+  min-height: 107px;
+  background: #f7f8f9;
+  border-radius: 8px;
+  padding: 0 15px;
+  line-height: 1.7;
+  font-size: 16px;
+  width: 100%;
+  
 `
