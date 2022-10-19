@@ -217,6 +217,5 @@ const DemoDescript = styled.div`
   padding: 0 15px;
   line-height: 1.7;
   font-size: 16px;
-  width: 100%;
   
 `
