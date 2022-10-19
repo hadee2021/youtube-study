@@ -38,6 +38,14 @@ Link: https://simple-youtube-study.netlify.app/
 
 ---
 ## 사용 방법
+
+### 데모 입장
+
+![유튜브 데모](https://user-images.githubusercontent.com/85422934/196579003-fb0426cf-1f28-4534-848d-45eefb4a4669.png)
+
+먼저!! 데모를 통해 유튜브 커리큘럼을 체험해보세요!
+
+
 ### 초기 입장
 
 ![첫 화면](https://user-images.githubusercontent.com/85422934/195775710-05aed1d6-0363-4f1e-8d08-7677805ab589.png)
