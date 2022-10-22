@@ -56,8 +56,13 @@
   border-radius: 10px;
 }
 
+.carousel > ul > li{
+  display: flex;
+  justify-content: center;
+}
+
 .video-card {
-  width: 350px;
+  width: 300px;
   height: 200px;
   margin: 0 10px;
 }
