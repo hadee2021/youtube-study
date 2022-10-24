@@ -32,6 +32,7 @@ const RoomContentForm = ({openForm, setOpenForm}: PropsForm) => {
       category: videoData.category !== '' ? videoData.category : '',
       memo: videoData.memo !== '' ? videoData.memo : '',
       youtube: videoData.youtube !== '' ? videoData.youtube : '',
+      complete: videoData.complete !== false ? videoData.complete : false
     })
   },[videoData])
   
@@ -69,6 +70,7 @@ const RoomContentForm = ({openForm, setOpenForm}: PropsForm) => {
       category: category.trim(),
       memo: memo.trim(),
       youtube: youtube.trim(),
+      complete: false,
       ...restForm,
     }
 

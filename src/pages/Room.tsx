@@ -26,7 +26,8 @@ const Room = () => {
       title: '',
       category:'',
       memo:'',
-      youtube:''
+      youtube:'',
+      complete: false
     })
     setRoomHeaderConsumer('addCard')
   }

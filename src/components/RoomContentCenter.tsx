@@ -31,6 +31,9 @@ const RoomContentCenter = ({room, roomId, openMenu, setOpenMenu, openAddCard}: P
         setToggle={setOpenMenu}
       />
       <div className="room-content-center">
+        <div className="room-content-center-descript">
+          카드의 제목을 눌러 완강을 표시하세요
+        </div>
         <div>
           {videoGroupEntries.map(([groupName, videoList]) => (
             <VideoGroup

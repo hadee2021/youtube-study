@@ -16,4 +16,5 @@ declare interface Video {
   category: string
   memo: string
   youtube: string
+  complete?: boolean
 }

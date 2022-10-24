@@ -5,8 +5,9 @@ import { EditOutlined, YouTube as YouTubeIcon, Close } from '@mui/icons-material
 import VideoModal from './VideoModal'
 import { useRecoilState } from 'recoil'
 import { openFormAtom, videoPlayOpenAtom, VideoDataAtom, videoUpdateAtom, roomHeaderConsumerAtom } from '../core/Atom'
-import { useDeleteVideo } from '../core/query'
+import { useDeleteVideo, useEditVideo } from '../core/query'
 import { useParams } from 'react-router-dom'
+
 
 interface PropsVideoCard {
   video: Video
@@ -35,7 +36,8 @@ const VideoCard = ({video}: PropsVideoCard) => {
       title: video.title,
       category:video.category,
       memo: video.memo,
-      youtube: video.youtube
+      youtube: video.youtube,
+      complete: video.complete as boolean
     })
     setVideoUpdate(true)
     setRoomHeaderConsumer('updateCard')
@@ -49,14 +51,41 @@ const VideoCard = ({video}: PropsVideoCard) => {
   }= useDeleteVideo(roomId, video.id) //삭제
 
   const onDelete = () => {
-    if (isDeleting) return
+    if(isDeleting) return
     deleteVideo()
+  }
+
+  // console.log('video', video)
+
+  const {
+    editVideo,
+    isLoading: isCompleting
+  }= useEditVideo(roomId, video.id)
+
+  const onComplete = () => {
+    if(isCompleting) return
+
+    const nextVideoForm = {
+      orderNumer: Number.parseInt(String(video.orderNumer), 10),
+      title: video.title.trim(),
+      category: video.category.trim(),
+      memo: video.memo.trim(),
+      youtube: video.youtube.trim(),
+      complete: !video.complete,
+    }
+
+    editVideo(nextVideoForm)
   }
 
 
   return (
     <>
-      <Card className="video-card">
+      <Card 
+        className="video-card"
+        sx={{ 
+          backgroundColor : `${video.complete === true ? "rgba(0, 0, 0, 0.2)": "white" }`
+        }}
+      >
         <CardContent>
           <Box>
             <Box className="video-card-header">
@@ -82,7 +111,11 @@ const VideoCard = ({video}: PropsVideoCard) => {
             </Box>
             <Box className="video-card-center">
               <Tooltip title={video.title} placement="bottom">
-                <Typography fontWeight="bold" className="video-card-center-title">
+                <Typography 
+                  fontWeight="bold" 
+                  className="video-card-center-title"
+                  onClick={() => onComplete()}
+                >
                   {video.title}
                 </Typography>
               </Tooltip>

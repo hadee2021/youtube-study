@@ -18,7 +18,8 @@ export const VideoDataAtom = atom({
     title: '',
     category:'',
     memo:'',
-    youtube:''
+    youtube:'',
+    complete: false
   }
 })
 

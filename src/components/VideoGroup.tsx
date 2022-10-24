@@ -73,7 +73,8 @@ const VideoGroup = ({category, videoList}:PropsVideoGroup) => {
       title: '',
       category: category,
       memo:'',
-      youtube:''
+      youtube:'',
+      complete: false
     })
     setVideoUpdate(true) // 변경점의 로직 사용
     setRoomHeaderConsumer('addCard')
