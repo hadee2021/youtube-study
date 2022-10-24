@@ -55,7 +55,7 @@ interface PropsVideoGroup {
 
 const VideoGroup = ({category, videoList}:PropsVideoGroup) => {
   const [open, setOpen] = useState(true)
-
+  
   // 빠른추가
   const[openForm, setOpenForm] = useRecoilState(openFormAtom)
   const[videoData, setVideoData] = useRecoilState(VideoDataAtom)
@@ -90,6 +90,11 @@ const VideoGroup = ({category, videoList}:PropsVideoGroup) => {
           <Typography variant="subtitle1" fontWeight="bold" className="category-name">
             {category || '카테고리 없음'}
           </Typography>
+          <div className="progress">
+            {videoList.reduce((acc: number, video: Video) => {
+              return video.complete === true ? acc + 1 : acc
+            }, 0)} / {videoList.length} 강
+          </div>
           <Button 
             
             size="small"
@@ -116,8 +121,12 @@ export default VideoGroup
 
 const CategoryBtn = styled.div`
   display: flex;
-  gap: 15px;
+  gap: 20px;
   .category-name {
     line-height: 2;
+  }
+  .progress {
+    line-height: 2;
+    font-size: 15px;
   }
 `
