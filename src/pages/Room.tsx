@@ -19,7 +19,8 @@ const Room = () => {
   const[roomHeaderConsumer, setRoomHeaderConsumer] = useRecoilState(roomHeaderConsumerAtom)
   const openAddCard = () => {
     setOpenForm(true)
-    setVideoData({...videoData,
+    setVideoData({
+      ...videoData,
       id:'',
       orderNumber:0,
       title: '',
