@@ -52,35 +52,6 @@ const VideoForm = ({videoForm, youtube}: Props) => {
         </Box>
         <Box>
           <Controller 
-            name="title"
-            control={control}
-            rules={{
-              required: "제목은 필수 입니다"
-            }}
-            render={({ fieldState }) => (
-              <TextField 
-                error={Boolean(fieldState.error)}
-                required
-                label="제목"
-                variant="standard"
-                {...register('title')}
-                fullWidth
-                helperText={(
-                  <Box
-                    component="span"
-                    visibility={fieldState.error ? "visible" : "hidden"}
-                  >
-                    <span>
-                      {fieldState.error?.message}
-                    </span>
-                  </Box>
-                )}
-              />
-            )}
-          />
-        </Box>
-        <Box>
-          <Controller 
             name="category"
             control={control}
             rules={{
@@ -107,6 +78,35 @@ const VideoForm = ({videoForm, youtube}: Props) => {
                   )}
                 />
               </Tooltip>
+            )}
+          />
+        </Box>
+        <Box>
+          <Controller 
+            name="title"
+            control={control}
+            rules={{
+              required: "제목은 필수 입니다"
+            }}
+            render={({ fieldState }) => (
+              <TextField 
+                error={Boolean(fieldState.error)}
+                required
+                label="제목"
+                variant="standard"
+                {...register('title')}
+                fullWidth
+                helperText={(
+                  <Box
+                    component="span"
+                    visibility={fieldState.error ? "visible" : "hidden"}
+                  >
+                    <span>
+                      {fieldState.error?.message}
+                    </span>
+                  </Box>
+                )}
+              />
             )}
           />
         </Box>
