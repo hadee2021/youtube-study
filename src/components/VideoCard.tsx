@@ -110,7 +110,7 @@ const VideoCard = ({video}: PropsVideoCard) => {
               </Box>
             </Box>
             <Box className="video-card-center">
-              <Tooltip title={video.title} placement="bottom">
+              <Tooltip title={video.title} placement="top">
                 <Typography 
                   fontWeight="bold" 
                   className="video-card-center-title"
