@@ -9,7 +9,7 @@ const VideoPlay = () => {
   const[openVideoPlay, setOpenVideoPlay] = useRecoilState(videoPlayOpenAtom)
   const[videoData, setVideoData] = useRecoilState(VideoDataAtom)
   return (
-    <div className="modal">
+    <div className="play-modal-body">
       <div>
         <Close onClick={() => setOpenVideoPlay(false)} />
       </div>

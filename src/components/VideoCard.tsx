@@ -55,8 +55,6 @@ const VideoCard = ({video}: PropsVideoCard) => {
     deleteVideo()
   }
 
-  // console.log('video', video)
-
   const {
     editVideo,
     isLoading: isCompleting
