@@ -1,13 +1,13 @@
 import { useState } from "react"
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material'
 
-interface PropsVideoModal {
+interface PropsMemoModal {
   label?: string
   title: string
   content: string
 }
 
-const VideoModal = ({label, title, content}:PropsVideoModal) => {
+const MemoModal = ({label, title, content}:PropsMemoModal) => {
   const [open, setOpen] = useState(false)
   return (
     <>
@@ -42,4 +42,4 @@ const VideoModal = ({label, title, content}:PropsVideoModal) => {
   )
 }
 
-export default VideoModal
+export default MemoModal

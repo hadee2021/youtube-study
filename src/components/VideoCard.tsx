@@ -2,7 +2,7 @@ import { Card, CardContent,
   IconButton, Box, Typography, Tooltip
 } from '@mui/material'
 import { EditOutlined, YouTube as YouTubeIcon, Close } from '@mui/icons-material'
-import VideoModal from './VideoModal'
+import MemoModal from './MemoModal'
 import { useRecoilState } from 'recoil'
 import { openFormAtom, videoPlayOpenAtom, VideoDataAtom, videoUpdateAtom, roomHeaderConsumerAtom } from '../core/Atom'
 import { useDeleteVideo, useEditVideo } from '../core/query'
@@ -127,7 +127,7 @@ const VideoCard = ({video}: PropsVideoCard) => {
               <Typography className="video-card-str-btn">
                 <a href={`${video.youtube}`} target="_blank">유튜브 이동</a>
               </Typography>
-              <VideoModal
+              <MemoModal
                 label="메모"
                 title="메모"
                 content={video.memo}
