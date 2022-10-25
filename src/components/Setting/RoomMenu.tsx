@@ -3,7 +3,7 @@ import ExitRoomButton from "./ExitRoomButton"
 
 const RoomMenu = () => {
   return (
-    <div className="room-menu">
+    <div className="room-menu-modal-body ">
       <ExitRoomButton />
       <DeleteRoomButton />
     </div>

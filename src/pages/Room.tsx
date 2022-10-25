@@ -56,10 +56,12 @@ const Room = () => {
       }
       {
         openMenu &&
-        <RoomMenu />
+        <div className="room-menu-modal-wrapper">
+          <RoomMenu />
+        </div>
       }
       
-      <div className={openMenu ? "modal-background-menu": ""}></div>
+      
       
       {
         openVideoPlay &&

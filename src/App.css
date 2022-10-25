@@ -6,15 +6,7 @@
   height: 100vh;
 }
 
-.room-menu {
-  width: 350px;
-  height: 100vh;
-  background: #FEFCE8;
-  position: fixed;
-  top: 64px;
-  padding: 30px;
-  z-index: 1300;
-}
+
 
 .add-card-header {
   justify-content: space-between;
@@ -110,14 +102,21 @@ a:visited {
   height: 500px;
 }
 
-.modal-background-menu {
+.room-menu-modal-wrapper {
   position: fixed;
   z-index: 1200;
   top: 64px;
   left: 0%;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.5);
+}
+
+.room-menu-modal-body {
+  width: 350px;
+  height: 100vh;
+  background: #FEFCE8;
+  padding: 30px;
 }
 
 
