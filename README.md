@@ -81,24 +81,34 @@ Link: https://simple-youtube-study.netlify.app/
 
 
 
-### 완료
+### 학습 페이지
 
-![youtube study main](https://user-images.githubusercontent.com/85422934/195777768-e178c201-d86f-4d13-8222-4a705a142b2a.png)
+![학습 페이지](https://user-images.githubusercontent.com/85422934/200269029-9fe65600-a292-4737-9d81-eda832c04881.png)
+
 
 카테고리별로 강의가 배열되고 캐러셀을 이용하여 넘기면서 영상을 찾을 수 있습니다.
 
-메모를 통해 영상에 자신만의 의견을 남길 수 있습니다.
+카드의 제목을 눌러서 완강을 표시하세요!!
 
-유튜브 버튼을 누르면 모달을 통해 영상을 시청하실 수 있습니다.
+카테고리에서 전체 강의수, 완료한 강의수를 볼 수 있습니다.
 
-유튜브 홈페이지에서 영상 시청을 하고 싶은 분들을 위해 링크기능도 지원하였습니다.
+
+![빠른 추가](https://user-images.githubusercontent.com/85422934/200270214-4a7328f9-c891-4fa9-ba94-b16989d66793.png)
+
+
+빠른 추가를 이용하면 카테고리와 순서가 자동완성 됩니다. 
+
+
+
 
 
 ### 영상 시청
 
 ![youtube study play](https://user-images.githubusercontent.com/85422934/195777998-d8c34cce-205d-48e1-8d4d-df9056327f46.png)
 
-모달을 통해 영상을 시청하는 모습입니다.
+카드의 유튜브 버튼을 누르면 모달을 통해 영상을 시청하실 수 있습니다.
+
+유튜브 홈페이지에서 영상 시청을 하고 싶은 분들을 위해 링크기능도 지원하였습니다.
 
 
 ---
